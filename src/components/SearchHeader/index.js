@@ -14,22 +14,21 @@ import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import PlayCircleOutlinedIcon from "@mui/icons-material/PlayCircleOutlined";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
-import CircularProgress from "@mui/material/CircularProgress";
 
 const SearchHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userSearch, setUserSearch] = useState("");
   const [result, setResult] = useState("");
   const [isSearched, setIsSearched] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleSearch = () => {
     setIsOpen(!isOpen);
   };
 
   const hanldeSearch = () => {
-    setIsLoading(true);
     let data = [];
+    // console.log("dada", Movies);
+    // console.log("imput", userSearch);
     for (let i = 0; i < Movies.length; i++) {
       if (
         Movies[i].Title.toLocaleLowerCase() === userSearch.toLocaleLowerCase()
@@ -38,9 +37,7 @@ const SearchHeader = () => {
       }
     }
     setResult(data);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+    console.log(result);
   };
   return (
     <>
@@ -61,7 +58,6 @@ const SearchHeader = () => {
                 onClick={() => {
                   hanldeSearch();
                   setIsSearched(true);
-                  setIsSearched(false);
                 }}
               />
               <input
@@ -91,19 +87,7 @@ const SearchHeader = () => {
           <p>No results found for your search.</p>
         </div>
       )}
-      {isLoading && (
-        <div
-          style={{
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <CircularProgress size={100} />
-        </div>
-      )}
-      {result.length > 0 && !isSearched && (
+      {result.length > 0 && (
         <div
           style={{
             backgroundColor: "#273244",
