@@ -91,12 +91,9 @@ const SearchHeader = () => {
             zIndex: "1",
           }}
         >
-          {/* {result.map((item) => (
-            <p>{item.Title}</p>
-          ))} */}
           <Grid container spacing={2}>
             {result.map((item) => (
-              <Grid item xs={12} sm={6} md={2.4}>
+              <Grid key={item.Title} item xs={12} sm={6} md={2.4}>
                 <Card
                   sx={{ maxWidth: 345, height: 330 }}
                   style={{

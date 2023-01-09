@@ -31,6 +31,7 @@ const Sidebar = () => {
       <div className="main-nav-container">
         {headerLinks.map((item) => (
           <div
+            key={item.name}
             className={
               item?.name != "Discover" ? "nav-wrapper" : "nav-wrapper blue"
             }
