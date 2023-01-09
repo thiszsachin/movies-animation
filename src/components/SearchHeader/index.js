@@ -14,21 +14,22 @@ import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import PlayCircleOutlinedIcon from "@mui/icons-material/PlayCircleOutlined";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const SearchHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userSearch, setUserSearch] = useState("");
   const [result, setResult] = useState("");
   const [isSearched, setIsSearched] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSearch = () => {
     setIsOpen(!isOpen);
   };
 
   const hanldeSearch = () => {
+    setIsLoading(true);
     let data = [];
-    // console.log("dada", Movies);
-    // console.log("imput", userSearch);
     for (let i = 0; i < Movies.length; i++) {
       if (
         Movies[i].Title.toLocaleLowerCase() === userSearch.toLocaleLowerCase()
@@ -37,18 +38,25 @@ const SearchHeader = () => {
       }
     }
     setResult(data);
-    console.log(result);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div className={isOpen ? "search-container" : "search-container-close"}>
           {!isOpen && (
-            <SearchIcon fontSize="large" onClick={() => handleSearch()} />
+            <SearchIcon
+              style={{ cursor: "pointer" }}
+              fontSize="large"
+              onClick={() => handleSearch()}
+            />
           )}
           {isOpen && (
             <div className="input-wrapper">
               <SearchIcon
+                style={{ cursor: "pointer" }}
                 fontSize="large"
                 onClick={() => {
                   hanldeSearch();
@@ -62,10 +70,12 @@ const SearchHeader = () => {
                 onChange={(e) => setUserSearch(e.target.value)}
               />
               <CloseIcon
+                style={{ cursor: "pointer" }}
                 className="close-icon"
                 onClick={() => {
                   setIsOpen(false);
                   setResult("");
+                  setUserSearch("");
                 }}
               />
             </div>
@@ -81,7 +91,19 @@ const SearchHeader = () => {
           <p>No results found for your search.</p>
         </div>
       )}
-      {result.length > 0 && (
+      {isLoading && (
+        <div
+          style={{
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <CircularProgress size={100} />
+        </div>
+      )}
+      {result.length > 0 && !isSearched && (
         <div
           style={{
             backgroundColor: "#273244",

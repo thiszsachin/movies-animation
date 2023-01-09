@@ -40,7 +40,7 @@ const Sidebar = () => {
             <span className="list-name">{item?.name}</span>
           </div>
         ))}
-        <div className="line-4" style={{ marginLeft: "-70px" }}>
+        <div className="line-4" style={{ marginLeft: "-60px" }}>
           <hr />
         </div>
         <div className="nav-wrapper">
@@ -55,7 +55,7 @@ const Sidebar = () => {
           </span>
           <span className="list-name">Recomended</span>
         </div>
-        <div className="line-4" style={{ marginLeft: "-70px" }}>
+        <div className="line-4" style={{ marginLeft: "-60px" }}>
           <hr />
         </div>
         <div className="nav-wrapper">

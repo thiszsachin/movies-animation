@@ -10,6 +10,8 @@ import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import PlayCircleOutlinedIcon from "@mui/icons-material/PlayCircleOutlined";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
+import Stack from "@mui/joy/Stack";
+import LinearProgress from "@mui/joy/LinearProgress";
 
 const MoviesList = () => {
   const [moviesDetailsShow, setMoviesDetailsShow] = useState(false);
@@ -46,7 +48,33 @@ const MoviesList = () => {
             <Typography gutterBottom variant="h5">
               {currentMovies.Title}
             </Typography>
-            <p>{currentMovies.imdbRating}/10</p>
+            <div style={{ display: "flex" }}>
+              <span
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <LinearProgress
+                  style={{
+                    backgroundColor: "#1f2a3c",
+                    color: "#00e0ff",
+                    width: "100px",
+                    height: "10px",
+                  }}
+                  determinate
+                  value={
+                    currentMovies.imdbRating !== "N/A"
+                      ? currentMovies.imdbRating * 10
+                      : 0
+                  }
+                />
+              </span>
+              <p style={{ marginLeft: "10px" }}>
+                {currentMovies.imdbRating}/10
+              </p>
+            </div>
             <div style={{ marginBottom: "10px" }}>
               <span>Year:</span>
               <span style={{ marginLeft: "100px" }}>{currentMovies.Year}</span>
@@ -114,6 +142,7 @@ const MoviesList = () => {
                   onClick={() => {
                     setMoviesDetailsShow(true);
                     setCurrentMovie(item);
+                    window.scroll(0, 0);
                   }}
                 >
                   <PlayCircleOutlinedIcon />

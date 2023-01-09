@@ -7,10 +7,12 @@
 .sidebarContainer {
   background: #1f2a3c;
   width: 20vw;
+  position: fixed;
+  height: 100vh;
 }
 .movieContainer {
   background: #273244;
-
+  margin-left: 239px;
   width: 80vw;
 }
 .blue {
@@ -18,4 +20,14 @@
 }
 .movie-wrapper {
   margin: 50px;
+}
+
+@media (max-width: 480px) {
+  .movieContainer {
+    width: 100vw;
+    margin-left: 0px;
+  }
+  .sidebarContainer {
+    display: none;
+  }
 }
