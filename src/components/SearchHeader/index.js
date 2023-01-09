@@ -7,7 +7,7 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import Movies from "../../movieList.json";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
+// import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -31,7 +31,7 @@ const SearchHeader = () => {
     // console.log("imput", userSearch);
     for (let i = 0; i < Movies.length; i++) {
       if (
-        Movies[i].Title.toLocaleLowerCase() == userSearch.toLocaleLowerCase()
+        Movies[i].Title.toLocaleLowerCase() === userSearch.toLocaleLowerCase()
       ) {
         data.push(Movies[i]);
       }
@@ -76,7 +76,7 @@ const SearchHeader = () => {
           <MoreVertOutlinedIcon fontSize="large" />
         </div>
       </div>
-      {result.length == 0 && isSearched && (
+      {result.length === 0 && isSearched && (
         <div style={{ height: "100vh" }}>
           <p>No results found for your search.</p>
         </div>

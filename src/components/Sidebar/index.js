@@ -33,7 +33,7 @@ const Sidebar = () => {
           <div
             key={item.name}
             className={
-              item?.name != "Discover" ? "nav-wrapper" : "nav-wrapper blue"
+              item?.name !== "Discover" ? "nav-wrapper" : "nav-wrapper blue"
             }
           >
             <span>{item.icon}</span>

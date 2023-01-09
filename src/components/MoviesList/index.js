@@ -3,7 +3,7 @@ import Movies from "../../movieList.json";
 import "./style.css";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
+// import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -40,6 +40,7 @@ const MoviesList = () => {
               borderBottomLeftRadius: "16px",
             }}
             src={currentMovies.Images[0]}
+            alt={currentMovies.Title}
           />
           <div style={{ margin: "30px", fontWeight: 600 }}>
             <Typography gutterBottom variant="h5">
