@@ -37,7 +37,8 @@ const SearchHeader = () => {
       }
     }
     setResult(data);
-    console.log(result);
+    document.getElementById("movieListShow").style.display = "none";
+    document.getElementById("movieDetailsShow").style.display = "none";
   };
   return (
     <>
@@ -72,6 +73,11 @@ const SearchHeader = () => {
                   setIsOpen(false);
                   setResult("");
                   setUserSearch("");
+                  setIsSearched(false);
+                  document.getElementById("movieListShow").style.display =
+                    "flex";
+                  document.getElementById("movieDetailsShow").style.display =
+                    "flex";
                 }}
               />
             </div>
@@ -97,6 +103,7 @@ const SearchHeader = () => {
             zIndex: "1",
           }}
         >
+          <h4>Total {result.length} result found:</h4>
           <Grid container spacing={2}>
             {result.map((item) => (
               <Grid key={item.Title} item xs={12} sm={6} md={2.4}>

@@ -23,6 +23,7 @@ const MoviesList = () => {
     <>
       {moviesDetailsShow && (
         <div
+          id="movieDetailsShow"
           style={{
             opacity: !moviesDetailsShow ? "0" : "1",
             transition: "all 3s ease-in",
@@ -109,7 +110,7 @@ const MoviesList = () => {
           </div>
         </div>
       )}
-      <Grid container spacing={2}>
+      <Grid container spacing={2} id="movieListShow">
         {Movies.map((item) => (
           <Grid key={item.Title} item xs={12} sm={6} md={2.4}>
             <Card
